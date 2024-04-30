@@ -41,7 +41,12 @@ class FloatInput(TextInput):
 
 
 class WelcomeScreen(Screen):
-    size_of_rows = 1/5
+    widgets_names = {
+        'height_input': 'Ваш рост:',
+        'age_input': 'Ваш возраст:',
+        'weight_input': 'Ваш вес:',
+        'desired_weight_input': 'Желаемый вес:',
+    }
 
     def __init__(self, **kw):
         super().__init__(**kw)
@@ -49,15 +54,40 @@ class WelcomeScreen(Screen):
         # grid.pos_hint = {'center_x': .5, 'center_y': .5}
         #grid.size_hint_y = None
         #grid.height = grid.minimum_height
-        grid.add_widget(Label(text='Ваш рост:'))
-        grid.add_widget(FloatInput(multiline=False, input_type='number', size_hint=(self.size_of_rows, self.size_of_rows)))
-        grid.add_widget(Label(text='Ваш возраст:'))
-        grid.add_widget(FloatInput(multiline=False, input_type='number'))
-        grid.add_widget(Label(text='Ваш текущий вес:'))
-        grid.add_widget(FloatInput(multiline=False, input_type='number'))
-        grid.add_widget(Label(text='Желаемый вес:'))
-        grid.add_widget(FloatInput(multiline=False, input_type='number'))
+        for w_name, w_label in self.widgets_names.items():
+            setattr(self, w_name, FloatInput(multiline=False, input_type='number'))
+            grid.add_widget(Label(text=w_label))
+            grid.add_widget(getattr(self, w_name))
+        # self.height_input = FloatInput(multiline=False, input_type='number')
+        # self.age_input = FloatInput(multiline=False, input_type='number')
+        # self.weight_input = FloatInput(multiline=False, input_type='number')
+        # self.desired_weight_input = FloatInput(multiline=False, input_type='number')
+        #
+        # grid.add_widget(Label(text='Ваш рост:'))
+        # grid.add_widget(self.height_input)
+        # grid.add_widget(Label(text='Ваш возраст:'))
+        # grid.add_widget(self.age_input)
+        # grid.add_widget(Label(text='Ваш текущий вес:'))
+        # grid.add_widget(self.weight_input)
+        # grid.add_widget(Label(text='Желаемый вес:'))
+        # grid.add_widget(self.desired_weight_input)
+
+        # grid.add_widget(Label(text='Ваш рост:'))
+        # grid.add_widget(FloatInput(multiline=False, input_type='number', size_hint=(self.size_of_rows, self.size_of_rows)))
+        # grid.add_widget(Label(text='Ваш возраст:'))
+        # grid.add_widget(FloatInput(multiline=False, input_type='number'))
+        # grid.add_widget(Label(text='Ваш текущий вес:'))
+        # grid.add_widget(FloatInput(multiline=False, input_type='number'))
+        # grid.add_widget(Label(text='Желаемый вес:'))
+        # grid.add_widget(FloatInput(multiline=False, input_type='number'))
+        grid.add_widget(Button(text='Войти', on_release=self.login))
         self.add_widget(grid)
+
+    def login(self, *args):
+        user_info_dict = dict()
+        for w_name in self.widgets_names:
+            user_info_dict[w_name] = getattr(self, w_name).text
+        db.put('user_info', **user_info_dict)
 
 
 class MainScreen(Screen):
