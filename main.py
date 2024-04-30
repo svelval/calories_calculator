@@ -1,24 +1,17 @@
 import re
 
-import kivy
-import random
 
 from kivy.app import App
 from kivy.metrics import sp
 from kivy.storage.jsonstore import JsonStore
 from kivy.uix.button import Button
-from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
 from kivy.uix.screenmanager import Screen, ScreenManager
 from kivy.uix.textinput import TextInput
-from kivy.uix.widget import Widget
 
-red = [1, 0, 0, 1]
-green = [0, 1, 0, 1]
-blue = [0, 0, 1, 1]
-purple = [1, 0, 1, 1]
-db = JsonStore('db.json')
+
+db = JsonStore('db.json', indent=3)
 
 
 class FloatInput(TextInput):
