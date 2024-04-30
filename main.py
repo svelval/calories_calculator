@@ -120,7 +120,11 @@ class HBoxLayoutExample(App):
         sm = ScreenManager()
         sm.add_widget(WelcomeScreen(name='welcome'))
         sm.add_widget(MainScreen(name='main'))
-        sm.current = 'main'
+
+        if db.exists('user_info'):
+            sm.current = 'main'
+        else:
+            sm.current = 'welcome'
         return sm
 
 
