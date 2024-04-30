@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce957b1d-1b36-40a4-b9d4-3a8fe6edd4db" name="Changes" comment="First commit">
+    <list default="true" id="ce957b1d-1b36-40a4-b9d4-3a8fe6edd4db" name="Changes" comment="unused imports &amp; vars deleted">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -81,11 +81,38 @@
       <option name="project" value="LOCAL" />
       <updated>1714513823656</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="WelcomeScreen widgets added to dict">
+      <option name="closed" value="true" />
+      <created>1714516483819</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1714516483819</updated>
+    </task>
+    <task id="LOCAL-00003" summary="simple user_data validation added">
+      <option name="closed" value="true" />
+      <created>1714516510536</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1714516510536</updated>
+    </task>
+    <task id="LOCAL-00004" summary="unused imports &amp; vars deleted">
+      <option name="closed" value="true" />
+      <created>1714516541041</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1714516541041</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="First commit" />
+    <MESSAGE value="WelcomeScreen widgets added to dict" />
+    <MESSAGE value="simple user_data validation added" />
+    <MESSAGE value="unused imports &amp; vars deleted" />
+    <option name="LAST_COMMIT_MESSAGE" value="unused imports &amp; vars deleted" />
   </component>
 </project>

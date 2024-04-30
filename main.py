@@ -82,6 +82,22 @@ class WelcomeScreen(Screen):
             user_info_dict[w_name] = getattr(self, w_name).text
         db.put('user_info', **user_info_dict)
 
+    def validate_user_data(self):
+        try:
+            user_data = db.get('user_info')
+        except KeyError:
+            return False
+
+        if len(user_data.keys() - self.widgets_names.keys()) != 0:
+            return False
+
+        for data_item in user_data.values():
+            try:
+                float(data_item)
+            except ValueError:
+                return False
+        return True
+
 
 class MainScreen(Screen):
     pass
@@ -110,11 +126,13 @@ class MainScreen(Screen):
 
 class HBoxLayoutExample(App):
     def build(self):
+        welcome_screen = WelcomeScreen(name='welcome')
+
         sm = ScreenManager()
-        sm.add_widget(WelcomeScreen(name='welcome'))
+        sm.add_widget(welcome_screen)
         sm.add_widget(MainScreen(name='main'))
 
-        if db.exists('user_info'):
+        if welcome_screen.validate_user_data():
             sm.current = 'main'
         else:
             sm.current = 'welcome'
